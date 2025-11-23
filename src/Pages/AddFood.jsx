@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const AddFood = () => {
+    const {user} = useContext(AuthContext)
      const [loading, setLoading] = useState(false);
 
-     const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
+    //  const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
 
      const handleAddFood = async (e) => {
        e.preventDefault();
@@ -15,22 +18,22 @@ const AddFood = () => {
        const pickupLocation = form.pickupLocation.value;
        const expireDate = form.expireDate.value;
        const notes = form.notes.value;
-       const imageFile = form.foodImage.files[0];
+       const foodImage = form.foodImage.value;
 
-       // 1️⃣ Upload image to imgbb
-       const imgForm = new FormData();
-       imgForm.append("image", imageFile);
+    //    // 1️⃣ Upload image to imgbb
+    //    const imgForm = new FormData();
+    //    imgForm.append("image", imageFile);
 
-       const uploadRes = await fetch(
-         `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
-         {
-           method: "POST",
-           body: imgForm,
-         }
-       );
+    //    const uploadRes = await fetch(
+    //      `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
+    //      {
+    //        method: "POST",
+    //        body: imgForm,
+    //      }
+    //    );
 
-       const uploadedImg = await uploadRes.json();
-       const foodImage = uploadedImg.data.url;
+    //    const uploadedImg = await uploadRes.json();
+    //    const foodImage = uploadedImg.data.url;
 
        // 2️⃣ Prepare data for MongoDB
        const newFood = {
@@ -48,7 +51,7 @@ const AddFood = () => {
        };
 
        // 3️⃣ Send data to backend
-       const res = await fetch("http://localhost:5000/foods", {
+       const res = await fetch("http://localhost:3000/add-food", {
          method: "POST",
          headers: { "Content-Type": "application/json" },
          body: JSON.stringify(newFood),
@@ -64,8 +67,8 @@ const AddFood = () => {
        setLoading(false);
      };
     return (
-      <div className="max-w-2xl mx-auto p-5 bg-white shadow-lg rounded-md">
-        <h2 className="text-2xl font-bold mb-4">Add New Food</h2>
+      <div className="max-w-2xl mx-auto p-5 bg-white shadow-lg rounded-md my-20">
+        <h2 className="text-2xl text-center font-bold mb-4">Add New Food</h2>
 
         <form onSubmit={handleAddFood}>
           {/* Food Name */}
@@ -78,17 +81,16 @@ const AddFood = () => {
           />
 
           {/* Food Image */}
-          <label className="block mb-2">Food Image (via imgbb)</label>
+          <label className="block mb-2">Food Image</label>
           <input
-            type="file"
+            type="text"
             name="foodImage"
-            accept="image/*"
             required
             className="w-full border p-2 mb-4 rounded"
           />
 
           {/* Quantity */}
-          <label className="block mb-2">Food Quantity (e.g., 5 plates)</label>
+          <label className="block mb-2">Food Quantity</label>
           <input
             type="text"
             name="quantity"
