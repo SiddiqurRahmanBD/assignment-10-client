@@ -98,7 +98,7 @@ const Login = () => {
                   {error && <p className="text-red-700 text-xs">{error}</p>}
                   <button
                     type="submit"
-                    className="btn bg-pink-500 text-white hover:bg-yellow-300 hover:text-black mt-4"
+                    className="btn bg-green-700 text-white hover:bg-yellow-300 hover:text-black mt-4"
                   >
                     Login
                   </button>
@@ -113,7 +113,7 @@ const Login = () => {
               <p className="text-center">
                 New to our website ? Please{" "}
                 <Link
-                  className="text-pink-500 hover:text-blue-500"
+                  className="text-green-500 hover:text-blue-500"
                   to="/auth/register"
                 >
                   Register
