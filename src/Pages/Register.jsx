@@ -109,7 +109,7 @@ const Register = () => {
                 )}
 
                 <button
-                  className="btn bg-pink-500 text-white mt-4"
+                  className="btn bg-green-700 text-white mt-4"
                   type="submit"
                 >
                   Register
@@ -123,7 +123,7 @@ const Register = () => {
 
             <p className="text-center">
               Already have an account?{" "}
-              <Link className="text-pink-500" to="/auth/login">
+              <Link className="text-green-500" to="/auth/login">
                 Login
               </Link>
             </p>
