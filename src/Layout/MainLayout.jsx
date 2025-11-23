@@ -9,7 +9,7 @@ const MainLayout = () => {
         <header>
          <Navbar/>
         </header>
-        <main className="flex-1">
+        <main className="flex-1 mx-auto px-5">
           <Outlet></Outlet>
         </main>
         <footer>

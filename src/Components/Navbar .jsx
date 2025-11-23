@@ -34,13 +34,15 @@ const Navbar  = () => {
                 <NavLink to="/available-foods">Available Foods</NavLink>
               </li>
               <li>
+                <NavLink to="/add-food">Add Food</NavLink>
+              </li>
+              <li>
                 <a>Contact Us</a>
               </li>
             </ul>
           </div>
-          <img src={foodShare} className='h-20 w-20' alt="" />
+          <img src={foodShare} className="h-20 w-20" alt="" />
           <a className="btn btn-ghost text-green-400 text-xl">Food Share</a>
-
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -49,6 +51,9 @@ const Navbar  = () => {
             </li>
             <li>
               <NavLink to="/available-foods">Available Foods</NavLink>
+            </li>
+            <li>
+              <NavLink to="/add-food">Add Food</NavLink>
             </li>
             <li>
               <a>Contact Us</a>
