@@ -3,10 +3,13 @@ import { useNavigate, Link } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
+import { FaEye } from "react-icons/fa";
+import { IoEyeOff } from "react-icons/io5";
 
 const Register = () => {
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [show, setShow] =useState(false);
 
   const navigate = useNavigate();
   const { createUser, setUser, updateUser, googleSignIn } =
@@ -97,17 +100,24 @@ const Register = () => {
                 <label className="label text-lg">Email</label>
                 <input type="email" name="email" className="input" required />
 
-                <label className="label text-lg">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  className="input"
-                  required
-                />
-                {passwordError && (
-                  <p className="text-xs text-red-500">{passwordError}</p>
-                )}
-
+                <div className="relative">
+                  <label className="label text-lg">Password</label>
+                  <input
+                    type={show ? "text" : "password"}
+                    name="password"
+                    className="input"
+                    required
+                  />
+                  {passwordError && (
+                    <p className="text-xs text-red-500">{passwordError}</p>
+                  )}
+                  <span
+                    onClick={() => setShow(!show)}
+                    className="absolute right-[25px] top-[42px] cursor-pointer z-50"
+                  >
+                    {show ? <FaEye size={15} /> : <IoEyeOff size={15} />}
+                  </span>
+                </div>
                 <button
                   className="btn bg-green-700 text-white mt-4"
                   type="submit"

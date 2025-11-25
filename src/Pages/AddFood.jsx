@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthProvider';
+import axios from 'axios';
 
 const AddFood = () => {
     const {user} = useContext(AuthContext)
      const [loading, setLoading] = useState(false);
-
-    //  const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
 
      const handleAddFood = async (e) => {
        e.preventDefault();
@@ -20,22 +19,6 @@ const AddFood = () => {
        const notes = form.notes.value;
        const foodImage = form.foodImage.value;
 
-    //    // 1️⃣ Upload image to imgbb
-    //    const imgForm = new FormData();
-    //    imgForm.append("image", imageFile);
-
-    //    const uploadRes = await fetch(
-    //      `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
-    //      {
-    //        method: "POST",
-    //        body: imgForm,
-    //      }
-    //    );
-
-    //    const uploadedImg = await uploadRes.json();
-    //    const foodImage = uploadedImg.data.url;
-
-       // 2️⃣ Prepare data for MongoDB
        const newFood = {
          foodName,
          foodImage,
@@ -51,18 +34,28 @@ const AddFood = () => {
        };
 
        // 3️⃣ Send data to backend
-       const res = await fetch("http://localhost:3000/add-food", {
-         method: "POST",
-         headers: { "Content-Type": "application/json" },
-         body: JSON.stringify(newFood),
-       });
+         axios
+           .post("http://localhost:3000/add-food",newFood)
 
-       const data = await res.json();
+           .then((res) => {
+             toast.success("Food added successfully!");
+             console.log(res.data);
+           })
+           .catch((err) => {
+             console.log(err);
+           });
+      //  const res = await fetch("http://localhost:3000/add-food", {
+      //    method: "POST",
+      //    headers: { "Content-Type": "application/json" },
+      //    body: JSON.stringify(newFood),
+      //  });
 
-       if (data.insertedId) {
-         toast.success("Food added successfully!");
-         form.reset();
-       }
+      //  const data = await res.json();
+
+      //  if (data.insertedId) {
+        
+      //    form.reset();
+      //  }
 
        setLoading(false);
      };
@@ -76,6 +69,7 @@ const AddFood = () => {
           <input
             type="text"
             name="foodName"
+            placeholder="Enter Food's Name"
             required
             className="w-full border p-2 mb-4 rounded"
           />
@@ -85,6 +79,7 @@ const AddFood = () => {
           <input
             type="text"
             name="foodImage"
+            placeholder='Image URL'
             required
             className="w-full border p-2 mb-4 rounded"
           />
@@ -92,8 +87,12 @@ const AddFood = () => {
           {/* Quantity */}
           <label className="block mb-2">Food Quantity</label>
           <input
-            type="text"
+            type="number"
             name="quantity"
+            step="1"
+            max="25"
+            min="0"
+            placeholder="Enter Food's Quantity"
             required
             className="w-full border p-2 mb-4 rounded"
           />
@@ -103,6 +102,7 @@ const AddFood = () => {
           <input
             type="text"
             name="pickupLocation"
+            placeholder="Enter Pickup Location"
             required
             className="w-full border p-2 mb-4 rounded"
           />
