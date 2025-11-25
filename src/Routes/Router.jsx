@@ -9,6 +9,8 @@ import AddFood from "../Pages/AddFood";
 import PrivateRoute from "./PrivateRoute";
 import { createBrowserRouter } from "react-router";
 import FoodDetails from "../Pages/FoodDetails";
+import ManageFood from "../Pages/ManageFood";
+import FoodRequest from "../Pages/FoodRequest";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddFood />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/manage-my-foods",
+        element: (
+          <PrivateRoute>
+            <ManageFood />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-food-requests",
+        element: (
+          <PrivateRoute>
+            <FoodRequest />
           </PrivateRoute>
         ),
       },
