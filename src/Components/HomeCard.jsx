@@ -24,7 +24,7 @@ const HomeCard = () => {
       {/* <h1 className="p-10 font-bold text-3xl text-center">
         Is there any available foods here?
       </h1> */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {foods.map((food) => (
           <Card key={food._id} food={food}></Card>
         ))}

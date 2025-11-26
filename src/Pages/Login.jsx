@@ -30,6 +30,8 @@ const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         setError(errorCode);
+        // setError(err.message);
+        // toast.error("Login Failed! Check your Email or Password.");
       });
   };
   const handleGoogleLogin = () => {
@@ -42,8 +44,8 @@ const Login = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-
-        setError(errorCode);
+         setError(errorCode);
+        toast.error("Something went wrong!");
       });
   };
   const handleForgetPass = () => {
@@ -72,6 +74,7 @@ const Login = () => {
                 <input
                   type="email"
                   name="email"
+                  autoComplete="off"
                   ref={emailRef}
                   className="input"
                   placeholder="Email"
@@ -83,6 +86,7 @@ const Login = () => {
                     type={show ? "text" : "password"}
                     name="password"
                     className="input"
+                    autoComplete="new-password"
                     placeholder="Password"
                     required
                   />

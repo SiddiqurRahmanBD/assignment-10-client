@@ -11,7 +11,6 @@ const Card = ({ food }) => {
     pickupLocation,
     expireDate,
     _id,
-    additionalNotes,
   } = food;
   return (
     <div className="card shadow-md hover:scale-105 transition">

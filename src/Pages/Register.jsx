@@ -9,7 +9,7 @@ import { IoEyeOff } from "react-icons/io5";
 const Register = () => {
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [show, setShow] =useState(false);
+  const [show, setShow] = useState(false);
 
   const navigate = useNavigate();
   const { createUser, setUser, updateUser, googleSignIn } =
@@ -89,23 +89,42 @@ const Register = () => {
             <form onSubmit={handleRegister}>
               <fieldset className="fieldset">
                 <label className="label text-lg">Name</label>
-                <input type="text" name="name" className="input" required />
+                <input 
+                type="text" 
+                name="name"
+                 className="input"
+                 placeholder="Enter Your Full Name"
+                  required />
                 {nameError && (
                   <p className="text-xs text-red-500">{nameError}</p>
                 )}
 
                 <label className="label text-lg">Photo URL</label>
-                <input type="text" name="photo" className="input" required />
+                <input 
+                type="text" 
+                name="photo"
+               className="input" 
+               placeholder="Photo URL"
+                 required />
 
                 <label className="label text-lg">Email</label>
-                <input type="email" name="email" className="input" required />
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="off"
+                  className="input"
+                  placeholder="Enter Your Email Address"
+                  required
+                />
 
                 <div className="relative">
                   <label className="label text-lg">Password</label>
                   <input
                     type={show ? "text" : "password"}
                     name="password"
+                    autoComplete="new-password"
                     className="input"
+                    placeholder="Enter Your Password"
                     required
                   />
                   {passwordError && (

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const FoodDetailsCard = ({ detail }) => {
   const [showModal, setShowModal] = useState(false);
@@ -34,22 +35,22 @@ const FoodDetailsCard = ({ detail }) => {
 
       console.log("Request sent:", res.data);
 
-      alert("Food request submitted successfully!");
+      toast.success("Food request submitted successfully!");
       setShowModal(false);
     } catch (error) {
       console.error(error);
-      alert("Something went wrong!");
+      toast.error("Something went wrong!");
     }
   };
 
   return (
     <>
-      <div className="card bg-base-100 w-3/4 md:w-1/2 shadow-xl mx-auto my-10">
+      <div className="card  md:w-9/12 shadow-xl mx-auto my-5 md:my-10">
         <figure>
           <img
             src={foodImage}
             alt={foodName}
-            className="w-full h-64 object-cover rounded-t-xl"
+            className="w-full h-70 md:h-100 object-cover rounded-t-xl"
           />
         </figure>
 
@@ -85,7 +86,7 @@ const FoodDetailsCard = ({ detail }) => {
 
           <div className="card-actions justify-end mt-4">
             <button
-              className="btn btn-primary"
+              className="btn bg-green-700 text-white"
               onClick={() => setShowModal(true)}
             >
               Request This Food
@@ -108,7 +109,10 @@ const FoodDetailsCard = ({ detail }) => {
             />
 
             <div className="modal-action">
-              <button onClick={handleRequestFood} className="btn btn-primary">
+              <button
+                onClick={handleRequestFood}
+                className="btn bg-green-700 text-white"
+              >
                 Send Request
               </button>
               <button className="btn" onClick={() => setShowModal(false)}>
