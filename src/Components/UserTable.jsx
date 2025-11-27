@@ -4,11 +4,25 @@ import { AuthContext } from "../Provider/AuthProvider";
 const UserTable = ({ food, index }) => {
   const { user } = useContext(AuthContext);
 
-  const { donatorName, donatorEmail } = food;
+  const { donatorName, donatorEmail, foodName, foodImage } = food;
 
   return (
     <tr>
       <th>{index + 1}</th>
+      <td>
+        <td>
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div className="mask mask-squircle h-15 w-15">
+                <img src={foodImage} alt="Avatar" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">{foodName}</div>
+            </div>
+          </div>
+        </td>
+      </td>
       <td>
         <div className="flex items-center gap-3">
           <div className="avatar">

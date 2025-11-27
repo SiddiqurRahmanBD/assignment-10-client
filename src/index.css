@@ -1,4 +1,6 @@
-
+.menu a.active {
+    color: green
+}
 
 @import "tailwindcss";
 @plugin "daisyui";

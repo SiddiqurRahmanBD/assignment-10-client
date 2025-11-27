@@ -26,6 +26,7 @@ const ManageFood = () => {
         <thead>
           <tr>
             <th>Serial No</th>
+            <th>Food</th>
             <th>Donated by</th>
             <th>Donator Email</th>
             <th>Favorite Color</th>

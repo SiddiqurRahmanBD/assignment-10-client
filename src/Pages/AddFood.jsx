@@ -13,7 +13,7 @@ const AddFood = () => {
 
        const form = e.target;
        const foodName = form.foodName.value;
-       const quantity = form.quantity.value;
+       const quantity = Number(form.quantity.value);
        const pickupLocation = form.pickupLocation.value;
        const expireDate = form.expireDate.value;
        const notes = form.notes.value;

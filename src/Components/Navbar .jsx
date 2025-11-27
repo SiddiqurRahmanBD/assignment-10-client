@@ -52,20 +52,19 @@ const Navbar = () => {
               <NavLink to="/available-foods">Available Foods</NavLink>
             </li>
             <li>
-              <NavLink to="/add-food">Add Food</NavLink>
-            </li>
-            <li>
               <a>Contact Us</a>
             </li>
           </ul>
         </div>
 
         <img src={foodShare} className="h-20 w-20" alt="" />
-        <a className=" text-green-700 text-xl font-bold">Food Share</a>
+        <a className=" text-green-700 text-2xl font-bold font-serif">
+          Food<span className="text-orange-400">Share</span>
+        </a>
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal text-lg font-semibold px-1">
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
@@ -106,6 +105,12 @@ const Navbar = () => {
             >
               {user && (
                 <div>
+                  <div className="text-center">
+                    <h3 className="font-semibold text-xl">
+                      {user.displayName}
+                    </h3>
+                    <p className="text-red-600">{user.email}</p>
+                  </div>
                   <li>
                     <NavLink to="/add-food">Add Food</NavLink>
                   </li>
@@ -118,7 +123,10 @@ const Navbar = () => {
                 </div>
               )}
               <li className="pt-3">
-                <button onClick={handleLogout} className=" btn bg-green-700 text-white hover:bg-yellow-300 hover:text-black">
+                <button
+                  onClick={handleLogout}
+                  className=" btn bg-green-700 text-white hover:bg-yellow-300 hover:text-black"
+                >
                   Logout
                 </button>
               </li>
