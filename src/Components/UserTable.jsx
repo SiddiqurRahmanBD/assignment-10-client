@@ -1,11 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link } from "react-router";
+import axios from "axios";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
-const UserTable = ({ food, index }) => {
+const UserTable = ({ food, index, onDelete }) => {
   const { user } = useContext(AuthContext);
 
   const { donatorName, donatorEmail, foodName, foodImage } = food;
+
+  const handleFoodDelete = (id) => {
+    axios
+      .delete(`http://localhost:3000/delete-food?id=${id}`)
+      .then((res) => {
+        console.log(res);
+
+        onDelete(id);
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <tr>
@@ -38,13 +69,18 @@ const UserTable = ({ food, index }) => {
       </td>
 
       <td>{donatorEmail}</td>
-      <td >
+      <td>
         <div className="flex items-center gap-2">
           {" "}
-          <Link to={`/update-food/${food._id}`}>
+          <Link to={`/update-food/${food?._id}`}>
             <button className="btn btn-outline btn-success">Update</button>
           </Link>
-          <button className="btn btn-outline btn-error">Delete</button>
+          <button
+            onClick={() => handleFoodDelete(food?._id)}
+            className="btn btn-outline btn-error"
+          >
+            Delete
+          </button>
         </div>
       </td>
 
