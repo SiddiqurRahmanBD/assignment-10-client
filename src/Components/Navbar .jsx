@@ -58,9 +58,9 @@ const Navbar = () => {
         </div>
 
         <img src={foodShare} className="h-20 w-20" alt="" />
-        <a className=" text-green-700 text-2xl font-bold font-serif">
+        <h1 className=" text-green-700 text-2xl font-bold font-serif">
           Food<span className="text-orange-400">Share</span>
-        </a>
+        </h1>
       </div>
 
       <div className="navbar-center hidden lg:flex">
@@ -133,22 +133,6 @@ const Navbar = () => {
             </ul>
           </div>
         ) : (
-          // <div className="flex justify-center items-center">
-          //   <img
-          //     className="w-15 h-15 rounded-full"
-          //     src={user.photoURL}
-          //     alt=""
-          //   />
-
-          //   <div>
-          //     <button
-          //       onClick={handleLogout}
-          //       className=""
-          //     >
-          //       Logout
-          //     </button>
-          //   </div>
-          // </div>
           <div className="flex">
             <NavLink to="/auth/login" className="btn">
               Login

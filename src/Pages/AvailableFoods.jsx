@@ -20,7 +20,12 @@ const AvailableFoods = () => {
 
   return (
     <div className="mx-auto mb-10">
-      <h1 className="p-10 font-bold text-3xl text-center">Is there any available foods here?</h1>
+      <div className="text-center my-5 md:my-10">
+        <h1 className="font-bold text-4xl text-center">
+          Available foods here
+        </h1>
+        <p className="text-gray-400">View and request all foods with only one click.</p>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {data.map((food) => (
           <Card key={food._id} food={food}></Card>

@@ -33,7 +33,6 @@ const AddFood = () => {
          createdAt: new Date(),
        };
 
-       // 3️⃣ Send data to backend
          axios
            .post("http://localhost:3000/add-food",newFood)
 
@@ -44,48 +43,38 @@ const AddFood = () => {
            .catch((err) => {
              console.log(err);
            });
-      //  const res = await fetch("http://localhost:3000/add-food", {
-      //    method: "POST",
-      //    headers: { "Content-Type": "application/json" },
-      //    body: JSON.stringify(newFood),
-      //  });
-
-      //  const data = await res.json();
-
-      //  if (data.insertedId) {
-        
-      //    form.reset();
-      //  }
 
        setLoading(false);
      };
     return (
       <div className="max-w-2xl mx-auto p-5 bg-white shadow-lg rounded-md my-20">
-        <h2 className="text-2xl text-center font-bold mb-4">Add New Food</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center text-green-600">
+         Add Food
+        </h2>
 
-        <form onSubmit={handleAddFood}>
+        <form onSubmit={handleAddFood} className="space-y-4">
           {/* Food Name */}
-          <label className="block mb-2">Food Name</label>
+          {/* <label className="block mb-2">Food Name</label> */}
           <input
             type="text"
             name="foodName"
             placeholder="Enter Food's Name"
             required
-            className="w-full border p-2 mb-4 rounded"
+            className="input input-bordered w-full"
           />
 
           {/* Food Image */}
-          <label className="block mb-2">Food Image</label>
+          {/* <label className="block mb-2">Food Image</label> */}
           <input
             type="text"
             name="foodImage"
-            placeholder='Image URL'
+            placeholder=" Food Image (URL)"
             required
-            className="w-full border p-2 mb-4 rounded"
+            className="input input-bordered w-full"
           />
 
           {/* Quantity */}
-          <label className="block mb-2">Food Quantity</label>
+          {/* <label className="block mb-2">Food Quantity</label> */}
           <input
             type="number"
             name="quantity"
@@ -94,34 +83,35 @@ const AddFood = () => {
             min="0"
             placeholder="Enter Food's Quantity"
             required
-            className="w-full border p-2 mb-4 rounded"
+            className="input input-bordered w-full"
           />
 
           {/* Pickup Location */}
-          <label className="block mb-2">Pickup Location</label>
+          {/* <label className="block mb-2">Pickup Location</label> */}
           <input
             type="text"
             name="pickupLocation"
             placeholder="Enter Pickup Location"
             required
-            className="w-full border p-2 mb-4 rounded"
+            className="input input-bordered w-full"
           />
 
           {/* Expire Date */}
-          <label className="block mb-2">Expire Date</label>
+          {/* <label className="block mb-2">Expire Date</label> */}
           <input
             type="date"
             name="expireDate"
             required
-            className="w-full border p-2 mb-4 rounded"
+            className="input input-bordered w-full"
           />
 
           {/* Notes */}
-          <label className="block mb-2">Additional Notes</label>
+          {/* <label className="block mb-2">Additional Notes</label> */}
           <textarea
             name="notes"
-            rows="3"
-            className="w-full border p-2 mb-4 rounded"
+            rows="5"
+            className="input input-bordered w-full mb-4"
+            placeholder="Addional Notes (Optional)"
           ></textarea>
 
           <button

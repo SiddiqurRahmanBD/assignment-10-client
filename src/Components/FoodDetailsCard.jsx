@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import {CiLocationOn } from "react-icons/ci";
+import { CgCalendarDates, CgNotes } from "react-icons/cg";
+import { MdProductionQuantityLimits } from "react-icons/md";
 
 const FoodDetailsCard = ({ detail }) => {
   const [showModal, setShowModal] = useState(false);
@@ -54,33 +57,49 @@ const FoodDetailsCard = ({ detail }) => {
           />
         </figure>
 
-        <div className="card-body">
-          <h2 className="card-title text-2xl font-bold">{foodName}</h2>
+        <div className="m-5 md:m-10 ">
+          <h2 className="card-title text-2xl font-bold md:flex justify-center">
+            {foodName}
+          </h2>
 
-          <div className="flex items-center gap-3 my-2">
-            <img
-              src={donatorImage}
-              alt={donatorName}
-              className="w-12 h-12 rounded-full border"
-            />
-            <p className="font-medium">Donated by: {donatorName}</p>
+          <div className="md:flex items-center justify-between">
+            <div className="flex justify-center items-center gap-3 my-2 ">
+              <img
+                src={donatorImage}
+                alt={donatorName}
+                className="w-12 h-12 rounded-full border"
+              />
+              <p className="font-medium"> Donated by: {donatorName}</p>
+            </div>
+
+            <p className="flex gap-2">
+              <strong className="flex items-center">
+                <MdProductionQuantityLimits size={20} color="green" />
+                Quantity:
+              </strong>{" "}
+              {quantity}
+            </p>
           </div>
 
-          <p>
-            <strong>Quantity:</strong> {quantity} portions
-          </p>
+          <div className="md:flex justify-between items-center">
+            <p className="flex gap-2">
+              <strong className="flex items-center">
+                <CiLocationOn size={20} color="red" /> Pickup Location:
+              </strong>
+              {pickupLocation}
+            </p>
 
-          <p>
-            <strong>Pickup Location:</strong> {pickupLocation}
-          </p>
-
-          <p>
-            <strong>Expires on:</strong> {expireDate}
-          </p>
-
+            <p className="flex gap-2">
+              <strong className="flex items-center">
+                <CgCalendarDates size={20} color="green" /> Expires on:
+              </strong>{" "}
+              {expireDate}
+            </p>
+          </div>
+            <p className="border-b-2 pt-5 text-gray-300"></p>
           {additionalNotes && (
-            <p className="italic mt-2">
-              <strong>Notes:</strong> {additionalNotes}
+            <p className="mt-5 md:mt-10 flex gap-2">
+              <strong className="flex items-center"><CgNotes size={20} color="green"/> Notes:</strong> {additionalNotes}
             </p>
           )}
 
@@ -97,7 +116,7 @@ const FoodDetailsCard = ({ detail }) => {
       {showModal && (
         <div className="modal modal-open">
           <div className="modal-box">
-            <h3 className="font-bold text-lg">Request this food</h3>
+            <h3 className="font-bold text-lg ">Request this food</h3>
 
             <p className="py-4">Why do you want this food?</p>
 

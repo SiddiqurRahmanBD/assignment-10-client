@@ -11,11 +11,15 @@ import { createBrowserRouter } from "react-router";
 import FoodDetails from "../Pages/FoodDetails";
 import ManageFood from "../Pages/ManageFood";
 import FoodRequest from "../Pages/FoodRequest";
+import ErrorPage from "../Pages/ErrorPage";
+import UpdateFood from "../Pages/UpdateFood";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement:<ErrorPage></ErrorPage>,
+    hydrateFallbackElement:<ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -56,6 +60,10 @@ const router = createBrowserRouter([
           <FoodDetails/>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/update-food/:id",
+        Component:UpdateFood
       },
     ],
   },

@@ -21,7 +21,12 @@ const ManageFood = () => {
       });
   }, [user.email]);
   return (
-    <div className="overflow-x-auto">
+    <div>
+      <div className="text-center my-5 md:my-10">
+        <h1 className="font-bold text-2xl md:text-4xl">Manage My Foods</h1>
+        <p className="text-gray-400 pt-2">View and manage your all foods easily.You can Update and Remove your anytimes</p>
+      </div>
+      <div className="overflow-x-auto md:mt-10">
       <table className="table">
         <thead>
           <tr>
@@ -29,7 +34,7 @@ const ManageFood = () => {
             <th>Food</th>
             <th>Donated by</th>
             <th>Donator Email</th>
-            <th>Favorite Color</th>
+            <th>Actions</th>
             <th></th>
           </tr>
         </thead>
@@ -41,6 +46,8 @@ const ManageFood = () => {
         </tbody>
       </table>
     </div>
+    </div>
+    
   );
 };
 
