@@ -2,13 +2,16 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import UserTable from "../Components/UserTable";
+import LoadingSpinner from "./LoadingSpinner";
 
 const ManageFood = () => {
   const { user } = useContext(AuthContext);
   const [foods, setFoods] = useState([]);
+   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!user?.email) return;
+     setLoading(true);
 
     axios
       .get(`http://localhost:3000/manage-foods?email=${user.email}`)
@@ -17,14 +20,15 @@ const ManageFood = () => {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => setLoading(false));
   }, [user.email]);
 
-  // ✅ Handle delete from child
   const handleDelete = (id) => {
     const remaining = foods.filter((item) => item._id !== id);
     setFoods(remaining);
   };
+  if(loading) return <LoadingSpinner/>
 
   return (
     <div>

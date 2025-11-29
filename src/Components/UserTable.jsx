@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link } from "react-router";
 import axios from "axios";
-import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const UserTable = ({ food, index, onDelete }) => {
@@ -83,10 +82,6 @@ const UserTable = ({ food, index, onDelete }) => {
           </button>
         </div>
       </td>
-
-      {/* <th>
-        <button className="btn btn-ghost btn-xs">details</button>
-      </th> */}
     </tr>
   );
 };

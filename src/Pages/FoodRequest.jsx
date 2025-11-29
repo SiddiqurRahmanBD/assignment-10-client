@@ -1,4 +1,5 @@
 import React from 'react';
+import FoodRequestTable from '../Components/FoodRequestTable';
 
 const FoodRequest = () => {
     return (

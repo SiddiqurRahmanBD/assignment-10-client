@@ -51,9 +51,7 @@ const Navbar = () => {
             <li>
               <NavLink to="/available-foods">Available Foods</NavLink>
             </li>
-            <li>
-              <a>Contact Us</a>
-            </li>
+    
           </ul>
         </div>
 
@@ -71,23 +69,12 @@ const Navbar = () => {
           <li>
             <NavLink to="/available-foods">Available Foods</NavLink>
           </li>
-          {/* {user && (
-            <li>
-              <NavLink to="/add-food">Add Food</NavLink>
-            </li>
-          )} */}
-          <li>
-            <a>Contact Us</a>
-          </li>
+          
         </ul>
       </div>
 
       <div className="navbar-end">
-        {/* {!user && (
-          <NavLink to="/auth/login" className="btn">
-            Login
-          </NavLink>
-        )} */}
+    
         {user ? (
           <div className="dropdown dropdown-end">
             <div
@@ -134,7 +121,7 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex">
-            <NavLink to="/auth/login" className="btn">
+            <NavLink to="/auth/login" className="btn bg-green-700 text-white">
               Login
             </NavLink>
           </div>

@@ -66,7 +66,7 @@ const Footer = () => {
       </footer> 
       <div className="text-center">
        
-        <p className="pb-10">
+        <p className="pb-10 border-t-2 inline-block">
           © 2025 <span className="text-green-700">Food</span>
           <span className="text-orange-400">Share</span>
           — Sharing Food, Spreading Kindness. All rights reserved.

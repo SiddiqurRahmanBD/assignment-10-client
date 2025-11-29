@@ -15,7 +15,6 @@ const FisrtStat = () => {
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {/* Step 1 */}
               <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all">
                 <div className="text-5xl mb-4 text-green-600 font-bold">1</div>
                 <h3 className="text-xl font-semibold mb-2">Post Food</h3>
@@ -25,7 +24,7 @@ const FisrtStat = () => {
                 </p>
               </div>
 
-              {/* Step 2 */}
+            
               <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all">
                 <div className="text-5xl mb-4 text-green-600 font-bold">2</div>
                 <h3 className="text-xl font-semibold mb-2">Find Food</h3>
@@ -35,7 +34,7 @@ const FisrtStat = () => {
                 </p>
               </div>
 
-              {/* Step 3 */}
+            
               <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all">
                 <div className="text-5xl mb-4 text-green-600 font-bold">3</div>
                 <h3 className="text-xl font-semibold mb-2">Collect Food</h3>

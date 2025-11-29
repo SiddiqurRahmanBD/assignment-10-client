@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
-import {CiLocationOn } from "react-icons/ci";
+import React, { useContext, useState } from "react";
+import { CiLocationOn } from "react-icons/ci";
 import { CgCalendarDates, CgNotes } from "react-icons/cg";
 import { MdProductionQuantityLimits } from "react-icons/md";
+import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const FoodDetailsCard = ({ detail }) => {
   const [showModal, setShowModal] = useState(false);
-  const [requestNote, setRequestNote] = useState("");
+  const { user } = useContext(AuthContext);
 
   if (!detail) return null;
 
@@ -20,41 +21,59 @@ const FoodDetailsCard = ({ detail }) => {
     pickupLocation,
     expireDate,
     additionalNotes,
-    _id,
+    status,
+   
   } = detail;
 
   // Handle Submit
-  const handleRequestFood = async () => {
-    try {
-      const payload = {
-        foodId: _id,
-        message: requestNote,
-      };
+  const handleRequestFood = (e) => {
+    e.preventDefault();
 
-      const res = await axios.post(
-        "http://localhost:3000/request-food",
-        payload
-      );
+    const form = e.target;
+    const location = form.location.value;
+    const reason = form.reason.value;
+    const contact = form.contact.value;
 
-      console.log("Request sent:", res.data);
+    const info = {
+      location,
+      reason,
+      contact,
+      userEmail: user?.email,
+      userName: user?.displayName,
+      userPhoto: user?.photoURL,
 
-      toast.success("Food request submitted successfully!");
-      setShowModal(false);
-    } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong!");
-    }
+      foodId: detail._id,
+      status: "pending",
+    };
+    console.log(info);
+
+    axios
+      .post("http://localhost:3000/request-food", info)
+      .then((res) => {
+        toast.success("Food requested successfully!");
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <>
       <div className="card  md:w-9/12 shadow-xl mx-auto my-5 md:my-10">
-        <figure>
+        <figure className="relative">
           <img
             src={foodImage}
             alt={foodName}
             className="w-full h-70 md:h-100 object-cover rounded-t-xl"
           />
+          <div className="absolute left-5 top-5">
+            {
+              status && <h1 className=" bg-green-800 rounded-2xl py-2 px-3 font-semibold text-white">
+                {status}
+              </h1>
+            }
+          </div>
         </figure>
 
         <div className="m-5 md:m-10 ">
@@ -96,10 +115,13 @@ const FoodDetailsCard = ({ detail }) => {
               {expireDate}
             </p>
           </div>
-            <p className="border-b-2 pt-5 text-gray-300"></p>
+          <p className="border-b-2 pt-5 text-gray-300"></p>
           {additionalNotes && (
             <p className="mt-5 md:mt-10 flex gap-2">
-              <strong className="flex items-center"><CgNotes size={20} color="green"/> Notes:</strong> {additionalNotes}
+              <strong className="flex items-center">
+                <CgNotes size={20} color="green" /> Notes:
+              </strong>{" "}
+              {additionalNotes}
             </p>
           )}
 
@@ -114,30 +136,76 @@ const FoodDetailsCard = ({ detail }) => {
         </div>
       </div>
       {showModal && (
-        <div className="modal modal-open">
-          <div className="modal-box">
-            <h3 className="font-bold text-lg ">Request this food</h3>
+        <div className="fixed inset-0  bg-opacity-40 flex justify-center items-center p-4 z-50">
+          <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
+            {/* Header */}
+            <h3 className="text-2xl font-bold text-green-700 mb-4 text-center">
+              Request This Food
+            </h3>
 
-            <p className="py-4">Why do you want this food?</p>
+            <p className="text-gray-600 text-center mb-6">
+              Please provide your information to request this food.
+            </p>
 
-            <textarea
-              value={requestNote}
-              onChange={(e) => setRequestNote(e.target.value)}
-              className="textarea textarea-bordered w-full"
-              placeholder="Write a short message..."
-            />
+            <form onSubmit={handleRequestFood}>
+              {/* FORM */}
+              <div className="space-y-4">
+                {/* Location */}
+                <div>
+                  <label className="font-semibold mb-1 block">
+                    Your Location
+                  </label>
+                  <input
+                    type="text"
+                    name="location"
+                    className="input input-bordered w-full"
+                    placeholder="Enter Your Location"
+                  />
+                </div>
 
-            <div className="modal-action">
-              <button
-                onClick={handleRequestFood}
-                className="btn bg-green-700 text-white"
-              >
-                Send Request
-              </button>
-              <button className="btn" onClick={() => setShowModal(false)}>
-                Cancel
-              </button>
-            </div>
+                {/* Why need food */}
+                <div>
+                  <label className="font-semibold mb-1 block">
+                    Why do you need this food?
+                  </label>
+                  <textarea
+                    name="reason"
+                    className="textarea textarea-bordered w-full"
+                    placeholder="Write a short message..."
+                    rows={3}
+                  />
+                </div>
+
+                {/* Contact */}
+                <div>
+                  <label className="font-semibold mb-1 block">
+                    Contact Number
+                  </label>
+                  <input
+                    type="text"
+                    name="contact"
+                    className="input input-bordered w-full"
+                    placeholder="01XXXXXXXXX"
+                  />
+                </div>
+              </div>
+
+              {/* Buttons */}
+              <div className="flex justify-end gap-3 mt-6">
+                <button
+                  type="submit"
+                  className="btn bg-green-700 hover:bg-green-800 text-white px-6"
+                >
+                  Send Request
+                </button>
+                <button
+                  className="btn px-6"
+                  onClick={() => setShowModal(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
