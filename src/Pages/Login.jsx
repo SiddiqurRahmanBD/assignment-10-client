@@ -30,8 +30,8 @@ const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         setError(errorCode);
-        // setError(err.message);
-        // toast.error("Login Failed! Check your Email or Password.");
+        console.log(error);
+        toast.error("Login Failed! Check your Email or Password.");
       });
   };
   const handleGoogleLogin = () => {

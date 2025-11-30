@@ -39,8 +39,10 @@ const ManageFood = () => {
           anytime.
         </p>
       </div>
-
-      <div className="overflow-x-auto md:mt-10">
+        {
+          foods.length === 0 ? (
+          <p className="text-gray-500 text-center text-2xl font-bold mb-10">No Food adds yet.</p>
+        ) :<div className="overflow-x-auto md:mt-10">
         <table className="table">
           <thead>
             <tr>
@@ -58,12 +60,14 @@ const ManageFood = () => {
                 key={food._id}
                 food={food}
                 index={index}
-                onDelete={handleDelete} // ✅ send delete handler
+                onDelete={handleDelete}
               />
             ))}
           </tbody>
         </table>
       </div>
+        }
+      
     </div>
   );
 };

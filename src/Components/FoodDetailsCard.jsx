@@ -21,11 +21,9 @@ const FoodDetailsCard = ({ detail }) => {
     pickupLocation,
     expireDate,
     additionalNotes,
-    status,
-   
+    food_status,
   } = detail;
 
-  // Handle Submit
   const handleRequestFood = (e) => {
     e.preventDefault();
 
@@ -68,11 +66,9 @@ const FoodDetailsCard = ({ detail }) => {
             className="w-full h-70 md:h-100 object-cover rounded-t-xl"
           />
           <div className="absolute left-5 top-5">
-            {
-              status && <h1 className=" bg-green-800 rounded-2xl py-2 px-3 font-semibold text-white">
-                {status}
-              </h1>
-            }
+            <h1 className=" bg-green-800 rounded-2xl py-2 px-3 font-semibold text-white">
+              {food_status}
+            </h1>
           </div>
         </figure>
 
@@ -138,7 +134,6 @@ const FoodDetailsCard = ({ detail }) => {
       {showModal && (
         <div className="fixed inset-0  bg-opacity-40 flex justify-center items-center p-4 z-50">
           <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
-            {/* Header */}
             <h3 className="text-2xl font-bold text-green-700 mb-4 text-center">
               Request This Food
             </h3>
@@ -148,9 +143,7 @@ const FoodDetailsCard = ({ detail }) => {
             </p>
 
             <form onSubmit={handleRequestFood}>
-              {/* FORM */}
               <div className="space-y-4">
-                {/* Location */}
                 <div>
                   <label className="font-semibold mb-1 block">
                     Your Location
@@ -163,7 +156,6 @@ const FoodDetailsCard = ({ detail }) => {
                   />
                 </div>
 
-                {/* Why need food */}
                 <div>
                   <label className="font-semibold mb-1 block">
                     Why do you need this food?
@@ -176,7 +168,6 @@ const FoodDetailsCard = ({ detail }) => {
                   />
                 </div>
 
-                {/* Contact */}
                 <div>
                   <label className="font-semibold mb-1 block">
                     Contact Number
@@ -190,7 +181,6 @@ const FoodDetailsCard = ({ detail }) => {
                 </div>
               </div>
 
-              {/* Buttons */}
               <div className="flex justify-end gap-3 mt-6">
                 <button
                   type="submit"

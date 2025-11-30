@@ -58,7 +58,9 @@ const handleReject = async (req) => {
       <h2 className="text-2xl font-bold mb-4">Food Requests</h2>
 
       {requests.length === 0 ? (
-        <p className="text-gray-500">No requests yet.</p>
+        <p className="text-gray-500 text-center text-2xl font-bold mb-10">
+          No requests yet.
+        </p>
       ) : (
         <div className="overflow-x-auto">
           <table className="table w-full">
@@ -109,19 +111,17 @@ const handleReject = async (req) => {
                   </td>
                   <td>
                     <div className="flex items-center gap-2">
-                      {/* Accept Button */}
                       <button
                         onClick={() => handleAccept(req)}
-                        disabled={req.status !== "pending"} // Only enable if pending
+                        disabled={req.status !== "pending"}
                         className="btn btn-success btn-sm"
                       >
                         Accept
                       </button>
 
-                      {/* Reject Button */}
                       <button
                         onClick={() => handleReject(req)}
-                        disabled={req.status !== "pending"} // Only enable if pending
+                        disabled={req.status !== "pending"}
                         className="btn btn-error btn-sm"
                       >
                         Reject

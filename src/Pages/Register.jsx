@@ -61,7 +61,7 @@ const Register = () => {
           })
           .catch((error) => console.log(error));
       })
-      .catch((error) => alert(error.code));
+      .catch((error) => toast.error(error.code));
   };
 
   const handleGoogle = () => {
