@@ -34,6 +34,7 @@ const ManageFood = () => {
   return (
     <div>
       <div className="text-center my-5 md:my-10">
+        <title>Manage my Foods</title>
         <h1 className="font-bold text-2xl md:text-4xl">Manage My Foods</h1>
         <p className="text-gray-400 pt-2">
           View and manage all your foods easily. You can update or remove

@@ -7,6 +7,7 @@ import Footer from '../Components/Footer';
 const ErrorPage = () => {
     return (
       <div>
+        <title>Error</title>
         <Navbar/>
         <div className="mx-auto mb-5 ">
           <title>Error 404</title>

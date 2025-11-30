@@ -63,12 +63,11 @@ const UpdateFood = () => {
   };
   return (
     <div className="flex justify-center items-center py-10 px-4">
+      <title>Update Food</title>
       <div className="max-w-xl w-full bg-white shadow-2xl rounded-2xl p-8">
         <h2 className="text-3xl font-bold mb-6 text-center text-green-600">
           Update Food
         </h2>
-
-        {/* Form */}
         <form onSubmit={handleUpdateFood} className="space-y-2">
           <label className="block mb-2">Food Name:</label>
           <input

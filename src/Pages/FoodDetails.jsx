@@ -19,6 +19,7 @@ const FoodDetails = () => {
 
   return (
     <div className="min-h-screen bg-base-200 py-10 px-4">
+      <title>Food Details</title>
       <div className="max-w-4xl mx-auto space-y-10">
         {details && <FoodDetailsCard detail={details} />}
 

@@ -25,6 +25,7 @@ const AvailableFoods = () => {
 
   return (
     <div className="mx-auto mb-10">
+      <title>Available Foods</title>
       <div className="text-center my-5 md:my-10">
         <h1 className="font-bold text-4xl text-center">Available foods here</h1>
         <p className="text-gray-400">

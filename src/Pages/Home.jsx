@@ -9,6 +9,7 @@ const Home = () => {
 
     return (
         <div className='my-15'>
+            <title>Home</title>
             <Banner></Banner>
             <HomeCard></HomeCard>
             <FisrtStat></FisrtStat>

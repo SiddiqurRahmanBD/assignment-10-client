@@ -19,6 +19,7 @@ const FoodRequest = () => {
   return (
       <div>
         <div className="text-center my-5 md:my-10">
+          <title>My Request Foods</title>
           <h2 className="font-bold text-2xl md:text-4xl">Request My Foods </h2>
           <p className="text-gray-400 pt-2">
             View and Check your all requested foods easily.
