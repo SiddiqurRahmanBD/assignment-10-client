@@ -11,7 +11,9 @@ const UserTable = ({ food, index, onDelete }) => {
 
   const handleFoodDelete = (id) => {
     axios
-      .delete(`http://localhost:3000/delete-food?id=${id}`)
+      .delete(
+        `https://assignment-10-server-beta-lime.vercel.app/delete-food?id=${id}`
+      )
       .then((res) => {
         console.log(res);
 

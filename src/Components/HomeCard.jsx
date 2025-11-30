@@ -13,7 +13,7 @@ const HomeCard = () => {
     AOS.refresh();
 
     axios
-      .get("http://localhost:3000/foods-home")
+      .get("https://assignment-10-server-beta-lime.vercel.app/foods-home")
       .then((res) => {
         setFoods(res.data);
       })

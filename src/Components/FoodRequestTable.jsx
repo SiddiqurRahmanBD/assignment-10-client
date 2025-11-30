@@ -7,50 +7,55 @@ const FoodRequestTable = ({ details }) => {
   const [requests, setRequests] = useState([]);
 
   const isOwner = user?.email === details?.donatorEmail;
- console.log(user.email,details.donatorEmail);
- console.log(isOwner);
+  // console.log(user.email, details.donatorEmail);
   useEffect(() => {
     if (isOwner && details?._id) {
       axios
-        .get(`http://localhost:3000/food-requests/${details._id}`)
+        .get(
+          `https://assignment-10-server-beta-lime.vercel.app/food-requests/${details._id}`
+        )
         .then((res) => {
           setRequests(res.data);
         })
         .catch((err) => console.log(err));
     }
   }, [details?._id, isOwner]);
-  
+
   const handleAccept = async (req) => {
-  try {
-    await axios.patch(`http://localhost:3000/accept-request/${req._id}`, {
-      foodId: details._id,
-    });
+    try {
+      await axios.patch(
+        `https://assignment-10-server-beta-lime.vercel.app/accept-request/${req._id}`,
+        {
+          foodId: details._id,
+        }
+      );
 
-    setRequests((prev) =>
-      prev.map((item) =>
-        item._id === req._id ? { ...item, status: "accepted" } : item
-      )
-    );
-  } catch (error) {
-    console.error(error);
-  }
-};
+      setRequests((prev) =>
+        prev.map((item) =>
+          item._id === req._id ? { ...item, status: "accepted" } : item
+        )
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-const handleReject = async (req) => {
-  try {
-    await axios.patch(`http://localhost:3000/reject-request/${req._id}`);
+  const handleReject = async (req) => {
+    try {
+      await axios.patch(
+        `https://assignment-10-server-beta-lime.vercel.app/reject-request/${req._id}`
+      );
 
-    setRequests((prev) =>
-      prev.map((item) =>
-        item._id === req._id ? { ...item, status: "rejected" } : item
-      )
-    );
-  } catch (error) {
-    console.error(error);
-  }
-};
+      setRequests((prev) =>
+        prev.map((item) =>
+          item._id === req._id ? { ...item, status: "rejected" } : item
+        )
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  
   if (!isOwner) return null;
 
   return (

@@ -7,14 +7,15 @@ import LoadingSpinner from "./LoadingSpinner";
 const ManageFood = () => {
   const { user } = useContext(AuthContext);
   const [foods, setFoods] = useState([]);
-   const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!user?.email) return;
-     setLoading(true);
 
     axios
-      .get(`http://localhost:3000/manage-foods?email=${user.email}`)
+      .get(
+        `https://assignment-10-server-beta-lime.vercel.app/manage-foods?email=${user.email}`
+      )
       .then((res) => {
         setFoods(res.data);
       })
@@ -28,7 +29,7 @@ const ManageFood = () => {
     const remaining = foods.filter((item) => item._id !== id);
     setFoods(remaining);
   };
-  if(loading) return <LoadingSpinner/>
+  if (loading) return <LoadingSpinner />;
 
   return (
     <div>
@@ -39,35 +40,36 @@ const ManageFood = () => {
           anytime.
         </p>
       </div>
-        {
-          foods.length === 0 ? (
-          <p className="text-gray-500 text-center text-2xl font-bold mb-10">No Food adds yet.</p>
-        ) :<div className="overflow-x-auto md:mt-10">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Serial No</th>
-              <th>Food</th>
-              <th>Donated by</th>
-              <th>Donator Email</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+      {foods.length === 0 ? (
+        <p className="text-gray-500 text-center text-2xl font-bold mb-10">
+          No Food adds yet.
+        </p>
+      ) : (
+        <div className="overflow-x-auto md:mt-10">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Serial No</th>
+                <th>Food</th>
+                <th>Donated by</th>
+                <th>Donator Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            {foods.map((food, index) => (
-              <UserTable
-                key={food._id}
-                food={food}
-                index={index}
-                onDelete={handleDelete}
-              />
-            ))}
-          </tbody>
-        </table>
-      </div>
-        }
-      
+            <tbody>
+              {foods.map((food, index) => (
+                <UserTable
+                  key={food._id}
+                  food={food}
+                  index={index}
+                  onDelete={handleDelete}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

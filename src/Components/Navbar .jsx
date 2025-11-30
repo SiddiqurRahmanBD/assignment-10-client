@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-500 shadow-sm">
+    <div className="navbar bg-base-300 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -51,7 +51,6 @@ const Navbar = () => {
             <li>
               <NavLink to="/available-foods">Available Foods</NavLink>
             </li>
-    
           </ul>
         </div>
 
@@ -69,12 +68,10 @@ const Navbar = () => {
           <li>
             <NavLink to="/available-foods">Available Foods</NavLink>
           </li>
-          
         </ul>
       </div>
 
       <div className="navbar-end">
-    
         {user ? (
           <div className="dropdown dropdown-end">
             <div
@@ -88,10 +85,10 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-md dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-md dropdown-content bg-base-100 rounded-box z-50! mt-3 w-52 p-2 shadow"
             >
               {user && (
-                <div>
+                <div className="">
                   <div className="text-center">
                     <h3 className="font-semibold text-xl">
                       {user.displayName}
@@ -107,6 +104,14 @@ const Navbar = () => {
                   <li>
                     <NavLink to="/my-food-requests">My Food Requests</NavLink>
                   </li>
+                  {/* <li className="pt-3">
+                    <button
+                      onClick={handleLogout}
+                      className=" btn bg-green-700 text-white hover:bg-yellow-300 hover:text-black "
+                    >
+                      Logout
+                    </button>
+                  </li> */}
                 </div>
               )}
               <li className="pt-3">

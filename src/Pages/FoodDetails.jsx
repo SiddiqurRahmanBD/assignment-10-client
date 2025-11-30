@@ -10,7 +10,9 @@ const FoodDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/food-details/${id}`)
+      .get(
+        `https://assignment-10-server-beta-lime.vercel.app/food-details/${id}`
+      )
       .then((res) => setDetails(res.data))
       .catch((err) => console.log(err));
   }, [id]);
@@ -18,7 +20,6 @@ const FoodDetails = () => {
   return (
     <div className="min-h-screen bg-base-200 py-10 px-4">
       <div className="max-w-4xl mx-auto space-y-10">
-       
         {details && <FoodDetailsCard detail={details} />}
 
         {details && <FoodRequestTable details={details} />}

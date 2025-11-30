@@ -4,13 +4,14 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const FoodRequest = () => {
   const [requests, setRequests] = useState([]);
-  console.log(requests);
-   const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
-     if (!user?.email) return;
+    if (!user?.email) return;
     axios
-      .get(`http://localhost:3000/request-foods?email=${user.email}`)
+      .get(
+        `https://assignment-10-server-beta-lime.vercel.app/request-foods?email=${user.email}`
+      )
       .then((res) => setRequests(res.data))
       .catch((err) => console.log(err));
   }, [user.email]);

@@ -46,7 +46,10 @@ const FoodDetailsCard = ({ detail }) => {
     console.log(info);
 
     axios
-      .post("http://localhost:3000/request-food", info)
+      .post(
+        "https://assignment-10-server-beta-lime.vercel.app/request-food",
+        info
+      )
       .then((res) => {
         toast.success("Food requested successfully!");
         console.log(res.data);

@@ -8,10 +8,8 @@ const AvailableFoods = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-
     axios
-      .get("http://localhost:3000/foods")
+      .get("https://assignment-10-server-beta-lime.vercel.app/foods")
       .then((res) => {
         setData(res.data);
       })
@@ -19,7 +17,7 @@ const AvailableFoods = () => {
         console.log(err);
       })
       .finally(() => {
-        setLoading(false); // <-- FIXED
+        setLoading(false);
       });
   }, []);
 

@@ -11,7 +11,9 @@ const UpdateFood = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/food-details/${id}`)
+      .get(
+        `https://assignment-10-server-beta-lime.vercel.app/food-details/${id}`
+      )
       .then((res) => {
         console.log("Backend Response:", res.data);
         setDetails(res.data);
@@ -43,7 +45,10 @@ const UpdateFood = () => {
     };
     console.log(updateFood);
     axios
-      .put(`http://localhost:3000/update-food/${id}`, updateFood)
+      .put(
+        `https://assignment-10-server-beta-lime.vercel.app/update-food/${id}`,
+        updateFood
+      )
 
       .then((res) => {
         toast.success("Food Update successfully!");
