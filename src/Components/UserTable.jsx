@@ -40,7 +40,7 @@ const UserTable = ({ food, index, onDelete }) => {
   };
 
   return (
-    <tr>
+    <tr className="bg-gray-100 mb-5">
       <td>{index + 1}</td>
       <th>
         <td>

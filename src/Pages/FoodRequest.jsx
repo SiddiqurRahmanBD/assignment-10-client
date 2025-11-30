@@ -17,11 +17,13 @@ const FoodRequest = () => {
   }, [user.email]);
 
   return (
-    <div>
-      <div className="mt-10">
-        <h2 className="text-2xl font-bold mb-4 text-center">
-          Request My Foods{" "}
-        </h2>
+      <div>
+        <div className="text-center my-5 md:my-10">
+          <h2 className="font-bold text-2xl md:text-4xl">Request My Foods </h2>
+          <p className="text-gray-400 pt-2">
+            View and Check your all requested foods easily.
+          </p>
+        </div>
 
         {requests.length === 0 ? (
           <p className="text-gray-500 text-center text-2xl font-bold mb-10">
@@ -42,7 +44,7 @@ const FoodRequest = () => {
 
               <tbody>
                 {requests.map((req) => (
-                  <tr key={req._id}>
+                  <tr key={req._id} className="bg-base-100">
                     <td>
                       <div className="flex items-center gap-3">
                         <img
@@ -81,7 +83,7 @@ const FoodRequest = () => {
           </div>
         )}
       </div>
-    </div>
+   
   );
 };
 

@@ -82,7 +82,7 @@ const FoodRequestTable = ({ details }) => {
 
             <tbody>
               {requests.map((req) => (
-                <tr key={req._id}>
+                <tr key={req._id} className="bg-base-100">
                   <td>
                     <div className="flex items-center gap-3">
                       <img

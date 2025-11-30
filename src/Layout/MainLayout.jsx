@@ -11,7 +11,7 @@ const MainLayout = () => {
       <header>
         <Navbar />
       </header>
-      <main className="flex-1 w-11/12 mx-auto">
+      <main className="flex-1 min-h-screen w-11/12 mx-auto">
         <Outlet></Outlet>
       </main>
       <footer>

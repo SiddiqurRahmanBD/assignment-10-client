@@ -45,10 +45,10 @@ const ManageFood = () => {
           No Food adds yet.
         </p>
       ) : (
-        <div className="overflow-x-auto md:mt-10">
-          <table className="table">
+        <div className="overflow-x-auto md:my-10">
+          <table className="table w-full">
             <thead>
-              <tr>
+              <tr className="bg-gray-200">
                 <th>Serial No</th>
                 <th>Food</th>
                 <th>Donated by</th>
