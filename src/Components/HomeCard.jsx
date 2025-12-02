@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { Link } from "react-router";
 import AOS from "aos";
-import "aos/dist/aos.css"; // <-- MUST import this
+import "aos/dist/aos.css";
 
 const HomeCard = () => {
   const [foods, setFoods] = useState([]);
 
   useEffect(() => {
-    AOS.init({ duration: 800 }); // <-- MUST initialize AOS
+    AOS.init({ duration: 800 });
     AOS.refresh();
 
     axios
@@ -34,7 +34,7 @@ const HomeCard = () => {
 
       <div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-        data-aos="fade-up" // <-- animate cards container
+        data-aos="fade-up"
       >
         {foods.map((food) => (
           <Card key={food._id} food={food} />

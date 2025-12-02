@@ -22,6 +22,7 @@ const FoodDetailsCard = ({ detail }) => {
     expireDate,
     additionalNotes,
     food_status,
+    status
   } = detail;
 
   const handleRequestFood = (e) => {
@@ -69,9 +70,15 @@ const FoodDetailsCard = ({ detail }) => {
             className="w-full h-70 md:h-100 object-cover rounded-t-xl"
           />
           <div className="absolute left-5 top-5">
-            <h1 className=" bg-green-800 rounded-2xl py-2 px-3 font-semibold text-white">
-              {food_status}
-            </h1>
+            {status ? (
+              <h1 className=" bg-green-800 rounded-2xl py-2 px-3 font-semibold text-white">
+                {status}
+              </h1>
+            ) : (
+              <h1 className=" bg-green-800 rounded-2xl py-2 px-3 font-semibold text-white">
+                {food_status}
+              </h1>
+            )}
           </div>
         </figure>
 
@@ -102,14 +109,14 @@ const FoodDetailsCard = ({ detail }) => {
           <div className="md:flex justify-between items-center">
             <p className="flex gap-2">
               <strong className="flex items-center">
-                <CiLocationOn size={20} color="red" /> Pickup Location:
+                <CiLocationOn size={20} color="red" />
               </strong>
               {pickupLocation}
             </p>
 
             <p className="flex gap-2">
               <strong className="flex items-center">
-                <CgCalendarDates size={20} color="green" /> Expires on:
+                <CgCalendarDates size={20} color="green" />
               </strong>{" "}
               {expireDate}
             </p>
@@ -118,7 +125,7 @@ const FoodDetailsCard = ({ detail }) => {
           {additionalNotes && (
             <p className="mt-5 md:mt-10 flex gap-2">
               <strong className="flex items-center">
-                <CgNotes size={20} color="green" /> Notes:
+                <CgNotes size={20} color="green" />
               </strong>{" "}
               {additionalNotes}
             </p>

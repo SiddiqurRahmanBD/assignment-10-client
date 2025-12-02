@@ -26,7 +26,7 @@ const AddFood = () => {
       pickupLocation,
       expireDate,
       additionalNotes: notes,
-      food_status: "Available", // default
+      food_status: "Available",
       donatorName: user.displayName,
       donatorEmail: user.email,
       donatorImage: user.photoURL,
@@ -57,8 +57,30 @@ const AddFood = () => {
       </h2>
 
       <form onSubmit={handleAddFood} className="space-y-4">
-        {/* Food Name */}
-        {/* <label className="block mb-2">Food Name</label> */}
+        <input
+          type="text"
+          name="donatorName"
+          defaultValue={user?.displayName}
+          readOnly
+          className="input input-bordered w-full"
+        />
+
+        <input
+          type="email"
+          name="donatorEmail"
+          defaultValue={user?.email}
+          readOnly
+          className="input input-bordered w-full"
+        />
+
+        <input
+          type="text"
+          name="donatorImage"
+          defaultValue={user?.photoURL}
+          readOnly
+          className="input input-bordered w-full"
+        />
+
         <input
           type="text"
           name="foodName"
@@ -67,8 +89,6 @@ const AddFood = () => {
           className="input input-bordered w-full"
         />
 
-        {/* Food Image */}
-        {/* <label className="block mb-2">Food Image</label> */}
         <input
           type="text"
           name="foodImage"
@@ -77,8 +97,6 @@ const AddFood = () => {
           className="input input-bordered w-full"
         />
 
-        {/* Quantity */}
-        {/* <label className="block mb-2">Food Quantity</label> */}
         <input
           type="number"
           name="quantity"
@@ -90,8 +108,6 @@ const AddFood = () => {
           className="input input-bordered w-full"
         />
 
-        {/* Pickup Location */}
-        {/* <label className="block mb-2">Pickup Location</label> */}
         <input
           type="text"
           name="pickupLocation"
@@ -100,8 +116,6 @@ const AddFood = () => {
           className="input input-bordered w-full"
         />
 
-        {/* Expire Date */}
-        {/* <label className="block mb-2">Expire Date</label> */}
         <input
           type="date"
           name="expireDate"
@@ -109,8 +123,6 @@ const AddFood = () => {
           className="input input-bordered w-full"
         />
 
-        {/* Notes */}
-        {/* <label className="block mb-2">Additional Notes</label> */}
         <textarea
           name="notes"
           rows="5"
